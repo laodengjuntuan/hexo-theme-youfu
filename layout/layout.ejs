@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<%- partial('_partial/head') %>
+<script>
+  // 百度统计
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?dbf21c708c15000816cd072c00402cbf";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <%- partial('_partial/header', null, {cache: !config.relative_link}) %>
+      <div class="outer" style="display: flex;">
+        <section id="main"><%- body %></section>
+        <aside id="aside"></aside>
+      </div>
+      <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+    </div>
+    <%- partial('_partial/mobile-nav', null, {cache: !config.relative_link}) %>
+    <%- partial('_partial/after-footer') %>
+  </div>
+  <% if (page.spyscroll) { %>
+    <script src="/spyscroll/spyscroll.js"></script>
+  <% } %>
+</body>
+</html>

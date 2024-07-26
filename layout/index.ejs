@@ -1,0 +1,28 @@
+<%# partial('_partial/archive', {pagination: 2, index: true}) %>
+<div class="index-wrapper">
+  <ul class="article-list">
+    <% page.posts.each(function(post){ %>
+      <li class="article-list-item">
+        <a class="article-list-item-link" href="<%- post.path %>">
+          <%- post.title %>
+        </a>
+      </li>
+    <% }) %>
+  </ul>
+  <% if (theme.sidebar && theme.sidebar !== 'bottom'){ %>
+    <%- partial('_partial/sidebar', null, {cache: !config.relative_link}) %>
+  <% } %>
+</div>
+
+
+
+<% if (page.total > 1){ %>
+  <nav id="page-nav">
+    <% var prev_text = "&laquo; " + __('prev');var next_text = __('next') + " &raquo;"%>
+    <%- paginator({
+      prev_text: prev_text,
+      next_text: next_text,
+      escape: false
+    }) %>
+  </nav>
+<% } %>
